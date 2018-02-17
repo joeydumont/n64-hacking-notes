@@ -8,6 +8,20 @@ tags:
  - SM64
 ---
 
+### 2018-02-17
+Directly writing the address in the behaviour script, i.e. `.dw 0x80400000`
+works when we use the assembled object file `hello_world.o` via `.importobj`.
+However, manually linking `hello_world.o`, even when specifying the absolute
+address of `MainHook` as `0x80400000`a via `-Wl,--defsym,start=0x80400000`,
+where `start` is defined in glank's custom linker script, results in issues
+when running the ROM (mupen seems to show an infinite loop, PJ64d pops up
+an "address error" dialog.
+
+Future steps: take a look at [queueRAM's SM64 specific linker script](1) to understand
+how to properly do this.
+
+[1]:https://github.com/queueRAM/sm64tools/blob/02bf6273d07c1c4304626b2b6f6ba44a3dc63ca4/examples/hello_c/hello_c.patch
+
 ### 2018-02-14
 
 Use of the `gz` codebase seems incompatible with the use of `importobj` in armips.
