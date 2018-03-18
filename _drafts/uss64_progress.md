@@ -8,6 +8,15 @@ tags:
  - SM64
 ---
 
+### 2018-03-18
+I am an idiot. The issue was not the VMA of the binary file, but rather the
+fact that the use of glank's `gfx_printf()` made the game hang. I have not
+isolated the specific issue yet, but glank's `gbi.h` only supports F3DEX2,
+while SM64 uses the much earlier Fast3D RSP microcode. To make everything work,
+it is highly probable that I will need to either rewrite `gbi.h` with Fast3D in
+mind, or simply reuse SGI's `gbi.h`, with modifications.
+
+
 ### 2018-02-17
 Directly writing the address in the behaviour script, i.e. `.dw 0x80400000`
 works when we use the assembled object file `hello_world.o` via `.importobj`.
