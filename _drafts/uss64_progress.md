@@ -8,6 +8,12 @@ tags:
  - SM64
 ---
 
+### 2018-03-21
+Next steps: 
+  - [ ] verify, with PJ64d, that calling `gfx_printf()` with F3DEX2 is indeed the cause of the infinite loop.
+  - [ ] If the above is true, add Fast3D support to glank's `gbi.h`.
+  - [ ] Find a display list in SM64's RAM and try to determine how to access it.
+
 ### 2018-03-18
 I am an idiot. The issue was not the VMA of the binary file, but rather the
 fact that the use of glank's `gfx_printf()` made the game hang. I have not
