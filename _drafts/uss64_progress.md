@@ -8,6 +8,16 @@ tags:
  - SM64
 ---
 
+### 2018-03-29
+
+It seems that `_SHIFTL` and `_SHIFTR` are defined in [SGI's MBI](http://n64devkit.square7.ch/header/mbi.htm) to be
+```C
+#define _SHIFTL(v, s, w)	\
+    ((unsigned int) (((unsigned int)(v) & ((0x01 << (w)) - 1)) << (s)))
+#define _SHIFTR(v, s, w)	\
+    ((unsigned int)(((unsigned int)(v) >> (s)) & ((0x01 << (w)) - 1)))
+```
+
 ### 2018-03-21
 Next steps: 
   - [ ] verify, with PJ64d, that calling `gfx_printf()` with F3DEX2 is indeed the cause of the infinite loop.
