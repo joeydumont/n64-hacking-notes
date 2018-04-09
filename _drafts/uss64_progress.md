@@ -14,8 +14,9 @@ Notice the different argument order.
 
 Instead of hijacking an existing SM64 display list, it might be easier, in the long run, to use
 our own display list. SM64's has two functions that might be of use
- - [0x8019CF44, "alloc_displaylist"]
- - [0x80246C10, "SendDisplayList"]
+ - `[0x8019CF44, "alloc_displaylist"]`
+ - `[0x80246C10, "SendDisplayList"]`
+ 
 Their arguments are not documented though, so I should check the diassembly and figure that out.
 
 ### 2018-03-29
