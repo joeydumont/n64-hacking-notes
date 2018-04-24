@@ -8,6 +8,13 @@ tags:
  - SM64
 ---
 
+### 2018-04-24
+
+Actually, this last pointer can be found in the RDP initialization function, called `myRdpInit` in n64split. 
+In the US version, we would have `gDisplayListHead = 0x8033B06C`. Not sure if it's wise to mess with the master
+display list in this way. A good idea would be to monitor the calls to `*alloc_displaylist(args) = 0x8019CF44`
+and hook into one of the display lists created.
+
 ### 2018-04-23
 Not sure how to find a pointer to a display list. Maybe try with the Japanese display list at `gDisplayListHead = 0x80339CFC`.
 Would have to refactor uss64 to accept the J rom though.
