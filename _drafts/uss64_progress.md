@@ -8,6 +8,10 @@ tags:
  - SM64
 ---
 
+### 2018-04-23
+Not sure how to find a pointer to a display list. Maybe try with the Japanese display list at `gDisplayListHead = 0x80339CFC`.
+Would have to refactor uss64 to accept the J rom though.
+
 ### 2018-04-09
 I have determined that the `_SHIFTL(v,s,w)` macro is equivalent to glank's `gF_(v,w,s)` macro.
 Notice the different argument order.
