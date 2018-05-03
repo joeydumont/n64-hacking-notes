@@ -8,6 +8,61 @@ tags:
  - SM64
 ---
 
+### 2018-05-03
+
+After some help from shygoo and camthesaxman, it seems that doing 
+`#define gDisplayListHead (*(Gfx **)0x8033B06C/0x80339CFC)` and calling
+`gSPDisplayList(gDisplayListHead++)` should do the trick. 
+
+The trick is to hook at `0x80247D1C` into `CleanupDisplayList`, which is called at the
+end of every frame. To do that in C, it will be necessary to insert a hook in there by
+patching the ROM with a jump to a function in uss64. To do that, we'll be inspired by
+gz's genhooks function. Our hook will probably need to call the overwritten function
+by using asm, as calling it in C put the game in an infinite loop.
+
+Here's the asm example by shygoo:
+```asm
+; 80247D14 function writes final rdpfullsync (E9) and enddl (B8) to the master dl (called once every frame)
+; 8033B06C master dl tail pointer
+
+; example procedure for pushing commands to the end of the master dl
+
+.org 0x80247D1C
+    jal 0x80370000
+    
+.org 0x80370000
+    addiu sp, sp, -0x18
+    sw    ra, 0x14 (sp)
+    jal   0x8024784C ; do function call we replaced
+    nop
+    lui   t0, 0x8034
+    lw    t1, 0xB06C (t0) ; t1 = dl tail pointer
+    
+    li    t2, 0xDEADBEEF
+    sw    r0, 0x00 (t1)
+    sw    t2, 0x04 (t1) ; write 00000000 DEADBEEF (g_noop) to dl
+    addiu t1, t1, 8
+    
+    sw    t1, 0xB06C (t0) ; increment tail pointer by num bytes we pushed
+    lw    ra, 0x14 (sp)
+    jr    ra
+    addiu sp, sp, 0x18
+```
+And another example using a fillrect:
+```asm
+    li t2, 0xF7000000
+    li t3, 0x0000F0FF
+    sw t2, 0x00 (t1)
+    sw t3, 0x04 (t1)
+    addiu t1, t1, 8
+    
+    li t2, 0xF60E00E0
+    li t3, 0x00060060
+    sw t2, 0x00 (t1)
+    sw t3, 0x04 (t1)
+    addiu t1, t1, 8
+```
+
 ### 2018-04-24
 
 Actually, this last pointer can be found in the RDP initialization function, called `myRdpInit` in n64split. 
