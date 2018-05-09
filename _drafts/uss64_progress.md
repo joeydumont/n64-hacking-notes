@@ -4,9 +4,21 @@ title: Progress on the USS64 practice hack
 author: jayd
 tags:
  - N64
- - DMA
+ - romhacking
  - SM64
 ---
+
+### 2018-05-09
+
+The simplest way to proceed, imo, will be to put all relevant addresses in
+`sm64.h`, then use Python/bash to substitute the proper addresses in the armips
+script. A nice feature would be to put the ranges and function names of `uss64`
+in a `n64split` compatiable format, such that our own code can be diassembled
+directly.
+
+TODO:
+ - [ ] Make a list of the hooks/functions necessary for the armips script.
+ - [ ] Find a way to intelligently list all the necessary addresses. A text file, yaml file?
 
 ### 2018-05-03
 
@@ -97,9 +109,9 @@ It seems that `_SHIFTL` and `_SHIFTR` are defined in [SGI's MBI](http://n64devki
 
 ### 2018-03-21
 Next steps: 
-  - [ ] verify, with PJ64d, that calling `gfx_printf()` with F3DEX2 is indeed the cause of the infinite loop.
-  - [ ] If the above is true, add Fast3D support to glank's `gbi.h`.
-  - [ ] Find a display list in SM64's RAM and try to determine how to access it.
+  - [X] verify, with PJ64d, that calling `gfx_printf()` with F3DEX2 is indeed the cause of the infinite loop.
+  - [X] If the above is true, add Fast3D support to glank's `gbi.h`.
+  - [X] Find a display list in SM64's RAM and try to determine how to access it.
 
 ### 2018-03-18
 I am an idiot. The issue was not the VMA of the binary file, but rather the
