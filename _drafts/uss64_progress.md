@@ -19,6 +19,7 @@ directly.
 TODO:
  - [ ] Make a list of the hooks/functions necessary for the armips script.
  - [ ] Find a way to intelligently list all the necessary addresses. A text file, yaml file?
+ - [ ] Read RAM entry point from ROM?
 
 ### 2018-05-03
 
