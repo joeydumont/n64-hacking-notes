@@ -8,6 +8,15 @@ tags:
  - SM64
 ---
 
+### 2018-05-14
+
+`GenerateHooks.py` has been added to the build pipeline of the ROM. The ROM runs properly,
+but nothing gets printed on the screen. Maybe check with STROOP what's happening at runtime?
+
+TODO:
+ - [ ] Dump `gfx_disp` and find a way to verify its sanity as a F3D DL.
+ - [ ] Use STROOP to check whether the DL was inserted properly.
+
 ### 2018-05-09
 
 The simplest way to proceed, imo, will be to put all relevant addresses in
@@ -17,8 +26,8 @@ in a `n64split` compatiable format, such that our own code can be diassembled
 directly.
 
 TODO:
- - [ ] Make a list of the hooks/functions necessary for the armips script.
- - [ ] Find a way to intelligently list all the necessary addresses. A text file, yaml file?
+ - [X] Make a list of the hooks/functions necessary for the armips script.
+ - [X] Find a way to intelligently list all the necessary addresses. A text file, yaml file?
  - [ ] Read RAM entry point from ROM?
 
 ### 2018-05-03
