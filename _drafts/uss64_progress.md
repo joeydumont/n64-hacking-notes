@@ -14,8 +14,8 @@ tags:
 but nothing gets printed on the screen. Maybe check with STROOP what's happening at runtime?
 
 TODO:
- - [ ] Dump `gfx_disp` and find a way to verify its sanity as a F3D DL.
- - [ ] Use STROOP to check whether the DL was inserted properly.
+ - [X] ~~Dump `gfx_disp` and find a way to verify its sanity as a F3D DL.~~ There are still some macros that I still haven't "ported" from F3DZEX to F3D in `gbi.h`.
+ - [X] ~~Use STROOP to check whether the DL was inserted properly.~~ I couldn't see my display list, but I'm not sure what's the failure mode of the RDP. Maybe it silently drops a DL it can't parse?
 
 ### 2018-05-09
 
