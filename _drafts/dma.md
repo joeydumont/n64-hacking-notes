@@ -22,10 +22,10 @@ Version| Address
 SM64-U | `0x80278504`
 SM64-J | ``
 SM64-S | ``
+SM64-E | ``
 
 
 The DmaCopy function has the following signature:
 ```C 
 DmaCopy(unsigned int RAM_offset, unsigned int, ROM_bottom, unsigned int ROM_top)
 ```
-
