@@ -8,6 +8,15 @@ tags:
  - SM64
 ---
 
+### 2018-08-24
+
+I think I added support for the whole Fast3D microcode to gz's `gbi.h`. However, there is 
+nothing that gets printed to the screen. Interestingly, when I compile uss64, the resulting
+asm of `gfx_flush()` is very different from gz's. I should try playing around with compile
+flags to check whether that is the issue. Specifically, `--gc-sections` could be removing
+some [used data](https://stackoverflow.com/questions/31521326/gc-sections-discards-used-data?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa). Although, I don't
+know why this flag would remove only parts of a function. Maybe the optimization level?
+
 ### 2018-05-14
 
 `GenerateHooks.py` has been added to the build pipeline of the ROM. The ROM runs properly,
