@@ -8,6 +8,12 @@ tags:
  - SM64
 ---
 
+### 2018-08-27
+
+I have an additional problem. The Fast3D microcode docs says that a segmented address
+must be given for a display list. Not sure how to put my DL into a segment.
+Also not sure how to check that that's what the RSP hangs on.
+
 ### 2018-08-24 (cont.)
 
 Turns out the problem was with the optimization flag in `CFLAGS`. I changed it to `-O1`
