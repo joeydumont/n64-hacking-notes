@@ -8,6 +8,12 @@ tags:
  - SM64
 ---
 
+### 2018-08-28
+
+Actually, the problem should be solved by just writing using the `#define MIPS_KSEG0_TO_PHYS(x)     (MIPS_I_(x)&0x1FFFFFFF)`
+macro for each reference to a physical address in our DL bulding. Thanks shygoo!
+
+
 ### 2018-08-27
 
 I have an additional problem. The Fast3D microcode docs says that a segmented address
