@@ -8,6 +8,13 @@ tags:
  - SM64
 ---
 
+
+### 2018-08-29
+
+The game still hangs after using `MIPS_KSEG0_TO_PHYS(x)` on `gSPDisplayList()`. 
+Should go through the display list manually to make sure that it is properly constructed.
+Maybe try to put it through SM64Paint, which supposed has a DL editor?
+
 ### 2018-08-28
 
 Actually, the problem should be solved by just writing using the `#define MIPS_KSEG0_TO_PHYS(x)     (MIPS_I_(x)&0x1FFFFFFF)`
