@@ -9,25 +9,25 @@ tags:
 ---
 
 
-### 2018-08-29
+### 2018-05-29
 
 The game still hangs after using `MIPS_KSEG0_TO_PHYS(x)` on `gSPDisplayList()`. 
 Should go through the display list manually to make sure that it is properly constructed.
 Maybe try to put it through SM64Paint, which supposed has a DL editor?
 
-### 2018-08-28
+### 2018-05-28
 
 Actually, the problem should be solved by just writing using the `#define MIPS_KSEG0_TO_PHYS(x)     (MIPS_I_(x)&0x1FFFFFFF)`
 macro for each reference to a physical address in our DL bulding. Thanks shygoo!
 
 
-### 2018-08-27
+### 2018-05-27
 
 I have an additional problem. The Fast3D microcode docs says that a segmented address
 must be given for a display list. Not sure how to put my DL into a segment.
 Also not sure how to check that that's what the RSP hangs on.
 
-### 2018-08-24 (cont.)
+### 2018-05-24 (cont.)
 
 Turns out the problem was with the optimization flag in `CFLAGS`. I changed it to `-O1`
 and `gfx_flush()` had the branch instructions indicative of a loop, like the one gz's
@@ -37,7 +37,7 @@ However, not I get a white screen at Peach's Letter, presumably because the disp
 I will try to diagnose that dumping the DL and inspecting it, and also by checking my
 `gbi.h` again.
 
-### 2018-08-24
+### 2018-05-24
 
 I think I added support for the whole Fast3D microcode to gz's `gbi.h`. However, there is 
 nothing that gets printed to the screen. Interestingly, when I compile uss64, the resulting
