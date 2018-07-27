@@ -8,6 +8,10 @@ tags:
  - SM64
 ---
 
+### 2018-07-27
+
+It's been a while, and now I have no clue why I get a white screen. Somehow calling `gfx_printf`
+seems to be the issue, although I don't understand why.
 
 ### 2018-05-29
 
