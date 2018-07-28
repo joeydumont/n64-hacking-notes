@@ -8,10 +8,33 @@ tags:
  - SM64
 ---
 
+### 2018-07-28
+
+That's because on the first frame only `gfx_start()` is called, and there is nothing in the DL.
+On the second frame we can properly dump the call to `gfx_printf`. However, for the time being,
+nothing gets printed on the screen.
+
+I tried changing the calls to `gDPLoadTextureTile` to use physical addresses with
+`MIPS_KSEG0_TO_PHYS`, and also the call to `gSPDisplayList`, to no avail. 
+
+Robin gave me his `font{.h,.c}` package to compare. He uses `gSPTextureRectangle` instead
+of `gSPScisTextureRectangle`, but I'm not sure that makes a difference. The arguments
+they pass to the functions are different though. Setting `s=t=0` in `gSPScisTextureRectangle`
+did not help, though.
+
+I have posted in the Discord. I'll take a break from this and wait a little.
+Should try to finish the introduction of the thesis before trying to crack the
+case of the invisible textures.
+
 ### 2018-07-27
 
 It's been a while, and now I have no clue why I get a white screen. Somehow calling `gfx_printf`
 seems to be the issue, although I don't understand why.
+
+The issue was that I wasn't linking in `fipps.png.o`. I am a complete idiot. 
+
+Now the issue is that the RDP seems to terminate the DL immediatley, with the included DL
+being simply `00410438:     B8000000 00000000`, i.e. `G_ENDDL`.
 
 ### 2018-05-29
 
