@@ -11,7 +11,7 @@ tags:
 ### 2018-07-28
 
 That's because on the first frame only `gfx_start()` is called, and there is nothing in the DL.
-On the second frame we can properly dump the call to `gfx_printf`. However, for the time being,
+On the second frame we can properly dump the results of the call to `gfx_printf`. However, for the time being,
 nothing gets printed on the screen.
 
 I tried changing the calls to `gDPLoadTextureTile` to use physical addresses with
