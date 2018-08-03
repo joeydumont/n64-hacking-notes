@@ -8,6 +8,17 @@ tags:
  - SM64
 ---
 
+### 2018-08-03
+
+The issue was with the `SetCombine` mode of the RDP. I have created a custom combine mode based
+on Trevanix and Robin's comments in the Discord. I do not understand why it works, though. It seems
+that the mode `G_CC_MODULATEIA` mode does not mesh well with SM64.
+
+Another issue right now is the build process. Before going further, it would be a good idea to have
+a working Makefile in order to simplify the build process. Right now the use of `compile.sh` is stupid
+and non-scalable. Follow gz's use of static pattern rule to generate rules for the different source files
+(the resource files, the uss64 files and the gz files) and have them all in the same `obj` directory.
+
 ### 2018-07-28
 
 That's because on the first frame only `gfx_start()` is called, and there is nothing in the DL.
