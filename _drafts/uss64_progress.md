@@ -8,6 +8,16 @@ tags:
  - SM64
 ---
 
+### 2018-08-18
+
+Apparently, there is a frame advance mode built-in in [SM64](https://hackmd.io/GTbRH81lQo6ajBSDyu138w#Frame-advance).
+Could do probably be good for a first version of that feature.
+
+>Frame advance
+>This was found by bad_boot. The short at 0x339EC8 is 0 normally and 2 when the game is paused, 4 during transitions (entering a   painting, going through a door, debug level select).>When you hack it to 5 you enter a frame advance mode.
+
+>The game only advances a frame if you press D-pad down then.
+
 ### 2018-08-03
 
 The issue was with the `SetCombine` mode of the RDP. I have created a custom combine mode based
@@ -42,7 +52,7 @@ case of the invisible textures.
 It's been a while, and now I have no clue why I get a white screen. Somehow calling `gfx_printf`
 seems to be the issue, although I don't understand why.
 
-The issue was that I wasn't linking in `fipps.png.o`. I am a complete idiot. 
+The issue was that I wasn't linking in `fipps.png.o`. I am a complete idiot. . 
 
 Now the issue is that the RDP seems to terminate the DL immediatley, with the included DL
 being simply `00410438:     B8000000 00000000`, i.e. `G_ENDDL`.
