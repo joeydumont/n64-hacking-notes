@@ -8,6 +8,43 @@ tags:
  - SM64
 ---
 
+### 2018-10-03
+
+The controller inputs are updated by the game loop at every frame. They are stored in 
+[`gPlayer1Controller`]( https://github.com/SM64-TAS-ABC/sm64_source/search?q=gPlayer1Controller&unscoped_q=gPlayer1Controller). The data is stored as a struct:
+```
+struct Controller
+{
+  /*0x00*/ s16 rawStickX;       //
+  /*0x02*/ s16 rawStickY;       //
+  /*0x04*/ float stickX;        // [-64, 64] positive is right
+  /*0x08*/ float stickY;        // [-64, 64] positive is up
+  /*0x0C*/ float stickMag;      // distance from center [0, 64]
+  /*0x10*/ u16 buttonDown;
+  /*0x12*/ u16 buttonPressed;
+  /*0x14*/ OSContStatus *statusData;
+  /*0x18*/ OSContPad *controllerData;
+};
+```
+with the OS structs defined as:
+```
+typedef struct {
+ /*0x00*/ u16     type;                   /* Controller Type */
+ /*0x02*/ u8      status;                 /* Controller status */
+ /*0x03*/ u8	  errno;
+} OSContStatus;
+
+typedef struct {
+ /*0x00*/ u16     button;
+ /*0x02*/ s8      rawStickX;		/* -80 <= stick_x <= 80 */
+ /*0x03*/ s8      rawStickY;		/* -80 <= stick_y <= 80 */
+ /*0x04*/ u8	  errno;
+} OSContPad;
+```
+See the [os_cont.h file](https://github.com/SM64-TAS-ABC/sm64_source/blob/c5453afc1574e405b1c5bb7a7faf6d63a19537bc/include/ultra64/os_cont.h)
+for the button bitmap.
+
+
 ### 2018-08-18
 
 Apparently, there is a frame advance mode built-in in [SM64](https://hackmd.io/GTbRH81lQo6ajBSDyu138w#Frame-advance).
