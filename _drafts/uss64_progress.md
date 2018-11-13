@@ -8,6 +8,15 @@ tags:
  - SM64
 ---
 
+### 2018-11-12
+
+I got a primitive input display working (only the buttons, I still have to output the joystick data). I'm trying to
+colour the textures according to their button colour on the N64 controller, but unfortunately I'm running into issues.
+I'm guessing this has to do with the colour combiner, but I can't be sure.
+
+In any case, from the color combiner presets I have tested, only those with a value in the `d`, hum... register (?),
+have resulted in something being displayed on the screen. It was never coloured though. 
+
 ### 2018-10-03
 
 The controller inputs are updated by the game loop at every frame. They are stored in 
