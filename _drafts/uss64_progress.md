@@ -8,6 +8,18 @@ tags:
  - SM64
 ---
 
+### 2019-03-26
+
+To reuse most of glank's work on menu stuff, I need to rewrite some of the code to work with SM64, and to refactor some of his code.
+
+Code to be refactored:
+  - `gfx.c`: need to flush the display list to SM64's master DL.
+  - `input.h/c`: need to provide the raw stick and button values.
+ 
+Code to be rewritten:
+  - `gz_command.c`: this basically defines the actions that the menu items perform. 
+  - `settings.c`: some of the settings are menu-related and thus generic, but a lot of them are OoT-specific. I think it would be easier to write a custom settings.
+
 ### 2018-11-12
 
 I got a primitive input display working (only the buttons, I still have to output the joystick data). I'm trying to
