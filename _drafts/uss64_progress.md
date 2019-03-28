@@ -17,7 +17,8 @@ Code to be refactored:
   - `input.h/c`: need to provide the raw stick and button values.
  
 Code to be rewritten:
-  - `gz_command.c`: this basically defines the actions that the menu items perform. 
+  - `gz_command.c`: this basically defines the actions that the menu items perform.
+  - `gz_settings.c`: defines other functions that menu items can be performed. Some are core, some are OoT specific.
   - `settings.c`: some of the settings are menu-related and thus generic, but a lot of them are OoT-specific. I think it would be easier to write a custom settings.
 
 ### 2018-11-12
