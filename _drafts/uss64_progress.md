@@ -8,6 +8,16 @@ tags:
  - SM64
 ---
 
+### 2019-04-02
+
+#### Non-Stop
+
+To implement non-stop, I just need to [nop two jumps](https://github.com/brikr/practice-rom-patcher/blob/master/asm/codes/normal/unobtained_stars.asm) in the InteractionStar function, `0x8024DC1C` and `0x8024DC74`.
+
+#### Lag Counter
+
+I'm not sure how to implement the lag counter. There should be a variable in SM64 that counts the number of frames that were displayed, and I could use the osGetTime() function to get the total time.
+
 ### 2019-03-26
 
 To reuse most of glank's work on menu stuff, I need to rewrite some of the code to work with SM64, and to refactor some of his code.
